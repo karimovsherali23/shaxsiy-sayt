@@ -303,9 +303,6 @@ th { color: var(--muted); font-weight: 500; position: sticky; top: 0; background
 }
 .cta-points b { display: block; font-size: 15px; }
 .cta-points span { color: rgba(255, 255, 255, .75); font-size: 14px; }
-.cta-links { display: flex; gap: 10px; flex-wrap: wrap; }
-.cta-links .chip { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .3); color: #fff; padding: 8px 16px; }
-.cta-links .chip:hover { background: #fff; color: var(--accent); border-color: #fff; }
 
 .cta-form, .cta-done {
   background: #fff; color: var(--text); border-radius: 22px; padding: 28px;
@@ -341,6 +338,30 @@ th { color: var(--muted); font-weight: 500; position: sticky; top: 0; background
 .cta-btn:hover span { transform: translateX(4px); }
 .cta-btn:disabled { opacity: .6; cursor: wait; transform: none; }
 .cta-btn.ghost { background: var(--accent-soft); color: var(--accent); box-shadow: none; }
+/* ijtimoiy tarmoqlar */
+.soc-ico { width: 42px; height: 42px; flex: none; border-radius: 12px; display: grid; place-items: center; color: #fff; }
+.soc-ico i {
+  width: 20px; height: 20px; background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat;
+}
+.soc-ico.telegram { background: #26a5e4; }
+.soc-ico.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.soc-ico.github { background: #181717; }
+.soc-ico.phone { background: #10b981; }
+.soc-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 460px; }
+.soc-tile {
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px 10px 10px; border-radius: 16px; text-decoration: none;
+  color: #fff; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22);
+  transition: background .15s, transform .15s;
+}
+.soc-tile:hover { background: rgba(255, 255, 255, .2); transform: translateY(-2px); }
+.soc-tile b { display: block; font-size: 15px; }
+.soc-tile small { display: block; font-size: 13px; color: rgba(255, 255, 255, .78); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.soc-row { display: flex; gap: 10px; margin-top: 22px; }
+.soc-row.center { justify-content: center; margin: 0 0 14px; }
+.soc-row a { border-radius: 12px; transition: transform .15s, box-shadow .15s; }
+.soc-row a:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(15, 27, 51, .18); }
+
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .form-msg { margin: 0; font-size: 14px; min-height: 20px; text-align: center; }
 .form-msg.err { color: var(--danger); }
@@ -364,6 +385,7 @@ footer { text-align: center; padding: 48px 16px; }
   .cta { grid-template-columns: minmax(0, 1fr); padding: 28px 18px; gap: 28px; border-radius: 22px; }
   .cta-form, .cta-done { padding: 22px 18px; }
   .row2 { grid-template-columns: minmax(0, 1fr); }
+  .soc-tiles { grid-template-columns: minmax(0, 1fr); }
   .edu-hero { aspect-ratio: 4 / 3; }
   .edu-overlay { padding: 32px 18px 18px; }
   .edu-gallery { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }

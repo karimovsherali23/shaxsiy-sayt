@@ -14,12 +14,28 @@
   ],
   "contacts": [
     {
+      "type": "telegram",
       "label": "Telegram",
-      "url": "https://t.me/USERNAME"
+      "handle": "@karimovsherali",
+      "url": "https://t.me/karimovsherali"
     },
     {
+      "type": "instagram",
+      "label": "Instagram",
+      "handle": "@karimovsherali_",
+      "url": "https://instagram.com/karimovsherali_"
+    },
+    {
+      "type": "github",
       "label": "GitHub",
+      "handle": "karimovsherali23",
       "url": "https://github.com/karimovsherali23"
+    },
+    {
+      "type": "phone",
+      "label": "Telefon",
+      "handle": "",
+      "url": ""
     }
   ],
   "skills": [

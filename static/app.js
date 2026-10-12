@@ -41,8 +41,14 @@ async function loadProfile() {
       <b>${esc(e.place)}</b><span>${[e.degree, e.field, e.years].filter(Boolean).map(esc).join(" · ")}</span>`;
   }
   $("#skills").innerHTML = (profile.skills || []).map((s) => `<span class="chip">${esc(s)}</span>`).join("");
-  $("#contacts").innerHTML = (profile.contacts || [])
-    .map((c) => `<a class="chip" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.label)}</a>`).join("");
+  const contacts = (profile.contacts || []).filter((c) => c.url);
+  const ext = (c) => (c.url.startsWith("http") ? ' target="_blank" rel="noopener"' : "");
+  const ico = (c) => `<span class="soc-ico ${esc(c.type)}"><i style="--icon:url(/static/img/icons/${esc(c.type)}.svg)"></i></span>`;
+  $("#contacts").innerHTML = contacts.map((c) => `
+    <a class="soc-tile" href="${esc(c.url)}"${ext(c)}>${ico(c)}<span><b>${esc(c.label)}</b><small>${esc(c.handle)}</small></span></a>`).join("");
+  const row = contacts.map((c) => `<a href="${esc(c.url)}"${ext(c)} title="${esc(c.label)}" aria-label="${esc(c.label)}">${ico(c)}</a>`).join("");
+  $("#heroSocial").innerHTML = row;
+  $("#footSocial").innerHTML = row;
   renderCarousel();
   renderHeroStats();
 }
