@@ -34,8 +34,14 @@
     {
       "type": "phone",
       "label": "Telefon",
-      "handle": "",
-      "url": ""
+      "handle": "+998 93 489 71 11",
+      "url": "tel:+998934897111"
+    },
+    {
+      "type": "email",
+      "label": "Email",
+      "handle": "info@karimovsherali.uz",
+      "url": "mailto:info@karimovsherali.uz"
     }
   ],
   "skills": [

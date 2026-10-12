@@ -356,6 +356,7 @@ th { color: var(--muted); font-weight: 500; position: sticky; top: 0; background
 .soc-ico.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
 .soc-ico.github { background: #181717; }
 .soc-ico.phone { background: #10b981; }
+.soc-ico.email { background: #ea4335; }
 .soc-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 460px; }
 .soc-tile {
   display: flex; align-items: center; gap: 12px; padding: 10px 14px 10px 10px; border-radius: 16px; text-decoration: none;
