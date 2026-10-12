@@ -33,7 +33,7 @@ Uzum Cloudflare'i AWS IP larini bloklaydi (HTTP 400). Shuning uchun serverda so'
 
 ## Server (AWS EC2)
 
-Docker konteyner `sayt`, port `127.0.0.1:8300`, Caddy: `https://sayt.52-58-206-125.sslip.io`.
+Docker konteyner `sayt`, port `127.0.0.1:8300`, Caddy: `https://karimovsherali.uz`.
 
 Redeploy:
 
