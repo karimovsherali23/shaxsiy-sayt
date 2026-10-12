@@ -1,0 +1,478 @@
+{
+  "name": "Sherali Karimov",
+  "title": "Talaba · Telegram bot va web dasturchi · Uzum Market seller",
+  "about": "Toshkent davlat iqtisodiyot universitetida o'qiyman. O'qish bilan birga Telegram botlar va web ilovalar yarataman, Uzum Marketda ikki do'kon orqali telefon aksessuarlari sotaman. Iqtisodiyot bilimini texnologiya bilan birlashtirib, odamlarga real foyda beradigan mahsulotlar qurishni yoqtiraman.",
+  "photo": "/static/img/me.jpg",
+  "location": "Toshkent, O'zbekiston",
+  "education": [
+    {
+      "place": "Toshkent davlat iqtisodiyot universiteti (TDIU)",
+      "degree": "Bakalavr, talaba",
+      "field": "",
+      "years": ""
+    }
+  ],
+  "contacts": [
+    {
+      "label": "Telegram",
+      "url": "https://t.me/USERNAME"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/tsuebot7-dev"
+    }
+  ],
+  "skills": [
+    "Python",
+    "aiogram 3",
+    "aiohttp / FastAPI",
+    "JavaScript",
+    "HTML / CSS",
+    "SQLite",
+    "Docker",
+    "AWS EC2",
+    "OpenAI API",
+    "Uzum Seller API",
+    "Marketplace analitika"
+  ],
+  "projects": [
+    {
+      "id": "xpremium",
+      "type": "Uzum do'kon",
+      "name": "xPremium",
+      "short": "Telefon g'iloflari va aksessuarlari do'koni",
+      "description": "Uzum Marketdagi birinchi do'konim (2024-yil dekabridan). Samsung, Redmi, iPhone uchun g'iloflar va aksessuarlar sotiladi. Savdo natijalari pastda jonli ko'rsatilgan.",
+      "features": [
+        "Uzum Market FBO/FBS savdo",
+        "Mahsulot kartochkalari va infografika",
+        "Savdo analitikasi Uzum Seller API orqali"
+      ],
+      "tags": [
+        "Uzum Market",
+        "E-commerce"
+      ],
+      "live": "uzum:58457",
+      "cover": "/static/img/projects/xpremium-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/xpremium-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-6.jpg",
+          "caption": ""
+        }
+      ],
+      "gallery": "products"
+    },
+    {
+      "id": "alicase",
+      "type": "Uzum do'kon",
+      "name": "Ali CASE",
+      "short": "Ikkinchi do'kon: stilli silikon g'iloflar",
+      "description": "Uzum Marketdagi ikkinchi do'konim (2026-yil yanvaridan). Stitch dizaynli va rangli silikon g'iloflarga ixtisoslashgan.",
+      "features": [
+        "Uzum Market savdo",
+        "Yangi mahsulot liniyasi",
+        "Savdo analitikasi Uzum Seller API orqali"
+      ],
+      "tags": [
+        "Uzum Market",
+        "E-commerce"
+      ],
+      "live": "uzum:95546",
+      "cover": "/static/img/projects/alicase-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/alicase-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-6.jpg",
+          "caption": ""
+        }
+      ],
+      "gallery": "products"
+    },
+    {
+      "id": "quiz",
+      "type": "Telegram bot",
+      "name": "Quiz bot",
+      "handle": "@Quiz_import_Bot",
+      "url": "https://t.me/Quiz_import_Bot",
+      "short": "AI yordamida test va animatsiyali taqdimot yaratuvchi bot",
+      "description": "O'qituvchi va talabalar uchun bot: istalgan fayldan testlarni sun'iy intellekt bilan ajratib oladi va bot ichida test o'tkazadi. Mavzu yozsangiz, tayyor dizayn bilan animatsiyali PowerPoint taqdimot yaratib beradi.",
+      "features": [
+        "Word, PDF, rasm fayllardan testlarni AI bilan ajratish",
+        "Bot ichida test o'tkazish va natijalar",
+        "AI taqdimot: 35 ta dizayn, 10 xil animatsiya, PPTX + web ko'rinish",
+        "Kahoot uslubidagi jonli viktorina (QR kod orqali qo'shilish)",
+        "Mini App muharrir: matnni tahrirlash, AI bilan slaydni qayta yozish",
+        "Click orqali to'lov"
+      ],
+      "tags": [
+        "aiogram 3",
+        "OpenAI",
+        "Mini App",
+        "PPTX",
+        "Docker"
+      ],
+      "cover": "/static/img/projects/quiz-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/quiz-1.jpg",
+          "caption": "Korporativ dizayndagi taqdimot"
+        },
+        {
+          "src": "/static/img/projects/quiz-2.jpg",
+          "caption": "Neon dizayn"
+        },
+        {
+          "src": "/static/img/projects/quiz-3.jpg",
+          "caption": "Akademik dizayn"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "35",
+          "label": "tayyor dizayn"
+        },
+        {
+          "value": "10",
+          "label": "animatsiya turi"
+        },
+        {
+          "value": "AI",
+          "label": "test va slayd"
+        }
+      ],
+      "live": "quiz",
+      "designs": [
+        {
+          "src": "/static/img/designs/01.jpg",
+          "name": "Korporativ"
+        },
+        {
+          "src": "/static/img/designs/02.jpg",
+          "name": "Neon tun"
+        },
+        {
+          "src": "/static/img/designs/03.jpg",
+          "name": "Tabiat"
+        },
+        {
+          "src": "/static/img/designs/04.jpg",
+          "name": "Yorqin"
+        },
+        {
+          "src": "/static/img/designs/05.jpg",
+          "name": "Akademik"
+        },
+        {
+          "src": "/static/img/designs/06.jpg",
+          "name": "Okean"
+        },
+        {
+          "src": "/static/img/designs/07.jpg",
+          "name": "Kosmos"
+        },
+        {
+          "src": "/static/img/designs/08.jpg",
+          "name": "Qahva"
+        },
+        {
+          "src": "/static/img/designs/09.jpg",
+          "name": "Yalpiz"
+        },
+        {
+          "src": "/static/img/designs/10.jpg",
+          "name": "Grafit"
+        },
+        {
+          "src": "/static/img/designs/11.jpg",
+          "name": "Pushti orzu"
+        },
+        {
+          "src": "/static/img/designs/12.jpg",
+          "name": "Startap"
+        },
+        {
+          "src": "/static/img/designs/13.jpg",
+          "name": "Lojuvard"
+        },
+        {
+          "src": "/static/img/designs/14.jpg",
+          "name": "Zaytun"
+        },
+        {
+          "src": "/static/img/designs/15.jpg",
+          "name": "Retro"
+        },
+        {
+          "src": "/static/img/designs/16.jpg",
+          "name": "Muz"
+        },
+        {
+          "src": "/static/img/designs/17.jpg",
+          "name": "Lava"
+        },
+        {
+          "src": "/static/img/designs/18.jpg",
+          "name": "Kitob"
+        },
+        {
+          "src": "/static/img/designs/19.jpg",
+          "name": "Bahor"
+        },
+        {
+          "src": "/static/img/designs/20.jpg",
+          "name": "Tungi shahar"
+        },
+        {
+          "src": "/static/img/designs/21.jpg",
+          "name": "Minimal"
+        },
+        {
+          "src": "/static/img/designs/22.jpg",
+          "name": "Quyosh botishi"
+        },
+        {
+          "src": "/static/img/designs/23.jpg",
+          "name": "Tibbiyot"
+        },
+        {
+          "src": "/static/img/designs/24.jpg",
+          "name": "Moliya"
+        },
+        {
+          "src": "/static/img/designs/25.jpg",
+          "name": "Bolalar"
+        },
+        {
+          "src": "/static/img/designs/26.jpg",
+          "name": "Huquq"
+        },
+        {
+          "src": "/static/img/designs/27.jpg",
+          "name": "Texno"
+        },
+        {
+          "src": "/static/img/designs/28.jpg",
+          "name": "Lavanda"
+        },
+        {
+          "src": "/static/img/designs/29.jpg",
+          "name": "Sahro"
+        },
+        {
+          "src": "/static/img/designs/30.jpg",
+          "name": "Marmar"
+        },
+        {
+          "src": "/static/img/designs/31.jpg",
+          "name": "Kod"
+        },
+        {
+          "src": "/static/img/designs/32.jpg",
+          "name": "Ekologiya"
+        },
+        {
+          "src": "/static/img/designs/33.jpg",
+          "name": "Sport"
+        },
+        {
+          "src": "/static/img/designs/34.jpg",
+          "name": "Shimol"
+        },
+        {
+          "src": "/static/img/designs/35.jpg",
+          "name": "Klassik ko'k"
+        }
+      ]
+    },
+    {
+      "id": "tsue",
+      "type": "Telegram bot",
+      "name": "TSUE dars jadvali boti",
+      "handle": "@Tsuetimebot",
+      "url": "https://t.me/Tsuetimebot",
+      "short": "TDIU talabalari uchun dars jadvali va eslatmalar",
+      "description": "Universitetimiz talabalari uchun qilgan botim. Guruh, o'qituvchi yoki xona jadvalini rasm ko'rinishida chiqaradi, darsdan oldin eslatadi va jadval o'zgarsa darhol xabar beradi.",
+      "features": [
+        "Guruh, o'qituvchi va xona jadvali chiroyli rasm ko'rinishida",
+        "Darsdan 10 daqiqa oldin eslatma",
+        "Jadval o'zgarganda avtomatik xabar",
+        "Bo'sh xonalarni topish",
+        "Telegram guruhlarga kunlik jadval yuborish",
+        "Admin panel, kunlik zaxira nusxa"
+      ],
+      "tags": [
+        "aiogram 3",
+        "FastAPI",
+        "Pillow",
+        "Docker"
+      ],
+      "live": "tsue",
+      "cover": "/static/img/projects/tsue-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/tsue-1.jpg",
+          "caption": "Bot chizgan guruh jadvali"
+        },
+        {
+          "src": "/static/img/projects/tsue-2.jpg",
+          "caption": "Botni guruhga ulash qo'llanmasi"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "1 300+",
+          "label": "guruh jadvali"
+        },
+        {
+          "value": "10 daq",
+          "label": "darsdan oldin eslatma"
+        },
+        {
+          "value": "24/7",
+          "label": "ishlaydi"
+        }
+      ]
+    },
+    {
+      "id": "darsreja",
+      "type": "Web sayt",
+      "name": "DarsReja",
+      "handle": "darsreja.uz",
+      "url": "https://darsreja.uz",
+      "short": "Maktablar uchun avtomatik dars jadvali tizimi",
+      "description": "Maktablar uchun to'liq SaaS tizim. Direktor o'rinbosari o'qituvchilar, sinflar, fanlar va smenalarni kiritadi — DarsReja bir necha soniyada to'qnashuvsiz haftalik jadval tuzadi. O'qituvchi kasal bo'lsa, tizim bo'sh o'qituvchini topib, o'rinbosar qo'yib beradi. Har bir rol uchun alohida kabinet bor: o'quv bo'limi, o'qituvchi va direktor.",
+      "features": [
+        "Bir tugma bilan to'qnashuvsiz jadval: o'qituvchi bir vaqtda ikki joyda bo'lmaydi",
+        "2026–2027 tayanch o'quv reja saytga kiritilgan, soatlar o'zi qo'yiladi",
+        "Kasal o'qituvchiga bir bosishda o'rinbosar topish",
+        "O'quv bo'limi, o'qituvchi va direktor kabinetlari",
+        "Ota-onalar uchun sinf jadvali sahifasi",
+        "Telegram orqali bildirishnoma va parolni tiklash",
+        "Excel va aSc Timetables dasturidan import, PDF/Excel eksport",
+        "O'zbek va rus tillarida, kompyuter va telefonda"
+      ],
+      "tags": [
+        "Python",
+        "JavaScript",
+        "SaaS",
+        "Telegram API",
+        "Caddy",
+        "AWS"
+      ],
+      "cover": "/static/img/projects/darsreja-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/darsreja-1.jpg",
+          "caption": "Bosh sahifa: jadval avtomatik tuziladi"
+        },
+        {
+          "src": "/static/img/projects/darsreja-2.jpg",
+          "caption": "Asosiy imkoniyatlar"
+        },
+        {
+          "src": "/static/img/projects/darsreja-3.jpg",
+          "caption": "O'quv bo'limi, o'qituvchi va direktor kabinetlari"
+        },
+        {
+          "src": "/static/img/projects/darsreja-4.jpg",
+          "caption": "Tariflar"
+        },
+        {
+          "src": "/static/img/projects/darsreja-mob.jpg",
+          "caption": "Telefonda ham qulay"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "5 daqiqa",
+          "label": "jadval tayyorlash"
+        },
+        {
+          "value": "100%",
+          "label": "to'qnashuvsiz"
+        },
+        {
+          "value": "48 sinf",
+          "label": "real maktabda sinalgan"
+        }
+      ]
+    },
+    {
+      "id": "slayd",
+      "type": "Web sayt",
+      "name": "Slayd",
+      "handle": "slayd.darsreja.uz",
+      "url": "https://slayd.darsreja.uz",
+      "short": "Taqdimotlarni brauzerda animatsiya bilan ko'rsatish",
+      "description": "Quiz bot yaratgan taqdimotlar shu saytda ochiladi: PowerPoint o'rnatmasdan, telefon yoki kompyuterda animatsiyalar bilan ko'rish mumkin. Taqdimot ichida jonli viktorina ham ishlaydi.",
+      "features": [
+        "Har bir taqdimot uchun alohida havola",
+        "Animatsiyali slaydlar, PowerPoint shart emas",
+        "Jonli viktorina uchun QR kod va o'qituvchi paneli"
+      ],
+      "tags": [
+        "Reveal.js",
+        "LibreOffice"
+      ],
+      "cover": "/static/img/projects/slayd-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/slayd-1.jpg",
+          "caption": "Tabiat dizayni"
+        },
+        {
+          "src": "/static/img/projects/slayd-2.jpg",
+          "caption": "Yorqin dizayn"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Web",
+          "label": "PowerPoint shart emas"
+        },
+        {
+          "value": "QR",
+          "label": "jonli viktorina"
+        }
+      ]
+    }
+  ]
+}

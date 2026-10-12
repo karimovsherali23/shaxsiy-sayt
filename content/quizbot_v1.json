@@ -1,0 +1,53 @@
+{
+ "title": "Birinchi versiya",
+ "period": {
+  "from": "2026-03-22",
+  "to": "2026-06-26"
+ },
+ "total": {
+  "users": 424,
+  "active_creators": 82,
+  "quizzes": 1511,
+  "questions": 35367,
+  "ai_quizzes": 10,
+  "payments": 122,
+  "revenue": 1164500,
+  "paying_users": 58,
+  "referrals": 67,
+  "partners": 10
+ },
+ "months": [
+  {
+   "month": "2026-03",
+   "new_users": 84,
+   "quizzes": 262,
+   "questions": 5524,
+   "payments": 15,
+   "revenue": 124000
+  },
+  {
+   "month": "2026-04",
+   "new_users": 9,
+   "quizzes": 41,
+   "questions": 1134,
+   "payments": 4,
+   "revenue": 4500
+  },
+  {
+   "month": "2026-05",
+   "new_users": 278,
+   "quizzes": 848,
+   "questions": 21133,
+   "payments": 70,
+   "revenue": 689500
+  },
+  {
+   "month": "2026-06",
+   "new_users": 53,
+   "quizzes": 360,
+   "questions": 7576,
+   "payments": 33,
+   "revenue": 346500
+  }
+ ]
+}

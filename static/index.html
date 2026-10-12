@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sherali Karimov</title>
+  <meta name="description" content="Talaba, Telegram bot va web dasturchi, Uzum Market seller">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%232563eb%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2714%27 fill=%27white%27 text-anchor=%27middle%27%3ESK%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="#top">SK</a>
+    <nav>
+      <a href="#about">Men haqimda</a>
+      <a href="#edu">Ta'lim</a>
+      <a href="#projects">Loyihalar</a>
+      <a href="#contact">Bog'lanish</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-text">
+        <span class="hello">Salom, men</span>
+        <h1 id="name">…</h1>
+        <p class="title" id="title"></p>
+        <p class="muted" id="location"></p>
+        <div class="hero-actions">
+          <a class="btn" href="#projects">Loyihalarim</a>
+          <a class="btn ghost" href="#contact">Bog'lanish</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img id="photo" class="photo" alt="" hidden>
+        <div class="avatar" id="avatar">SK</div>
+        <div class="hero-stats" id="heroStats"></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>Men haqimda</h2>
+      <p id="aboutText" class="lead about-text"></p>
+      <div class="chips" id="skills"></div>
+    </section>
+
+    <section id="edu">
+      <h2>Ta'lim</h2>
+      <div class="edu-hero">
+        <img src="/static/img/tdiu/bosh-bino.jpg" alt="TDIU bosh binosi">
+        <div class="edu-overlay" id="education"></div>
+      </div>
+      <div class="edu-gallery">
+        <figure><img src="/static/img/tdiu/iqtisodiyot.jpg" alt="TDIU iqtisodiyot fakulteti binosi" loading="lazy"><figcaption>Iqtisodiyot fakulteti</figcaption></figure>
+        <figure><img src="/static/img/tdiu/muzey.jpg" alt="TDIU ochiq osmon ostidagi muzey" loading="lazy"><figcaption>Ochiq osmon ostidagi muzey</figcaption></figure>
+        <figure><img src="/static/img/tdiu/tdiu-2026.jpg" alt="TDIU binosi" loading="lazy"><figcaption>Universitet binosi</figcaption></figure>
+      </div>
+      <p class="muted small credit">Rasmlar: TSUE WikiClub (CC BY-SA 4.0), Bestalex (CC0) — Wikimedia Commons</p>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <h2>Loyihalarim</h2>
+        <div class="arrows">
+          <button class="arrow" id="prev" aria-label="Oldingi">‹</button>
+          <button class="arrow" id="next" aria-label="Keyingi">›</button>
+        </div>
+      </div>
+      <div class="carousel" id="carousel"></div>
+      <p class="muted small hint">Batafsil ma'lumot va jonli statistika uchun kartani bosing</p>
+    </section>
+
+    <section id="contact">
+      <div class="cta">
+        <div class="cta-info">
+          <span class="cta-badge">Bog'lanish</span>
+          <h2>Keling, birga ishlaymiz</h2>
+          <p>Telegram bot, sayt, Uzum do'koni yoki hamkorlik bo'yicha savolingiz bormi? Raqamingizni qoldiring — o'zim qo'ng'iroq qilaman.</p>
+          <div class="cta-links" id="contacts"></div>
+        </div>
+
+        <form class="cta-form" id="contactForm" novalidate>
+          <h3>Ariza qoldiring</h3>
+          <div class="row2">
+            <div class="field"><input id="fName" name="name" autocomplete="name" placeholder=" " required maxlength="80"><label for="fName">Ismingiz</label></div>
+            <div class="field"><input id="fPhone" name="phone" type="tel" autocomplete="tel" placeholder=" " required maxlength="20"><label for="fPhone">Telefon raqam</label></div>
+          </div>
+          <div class="field"><input id="fEmail" name="email" type="email" autocomplete="email" placeholder=" " maxlength="254"><label for="fEmail">Email (ixtiyoriy)</label></div>
+          <div class="field"><textarea id="fMsg" name="message" rows="3" placeholder=" " maxlength="2000"></textarea><label for="fMsg">Qisqacha nima haqida? (ixtiyoriy)</label></div>
+          <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="check"><input type="checkbox" name="consent"><span>Men bilan telefon yoki email orqali bog'lanishga roziman</span></label>
+          <button class="cta-btn" type="submit">Yuborish <span aria-hidden="true">→</span></button>
+          <p class="form-msg" id="formMsg" role="status"></p>
+        </form>
+
+        <div class="cta-done" id="formDone" hidden>
+          <div class="done-icon">✓</div>
+          <h3>Arizangiz qabul qilindi!</h3>
+          <p>Rahmat. Tez orada siz qoldirgan raqamga qo'ng'iroq qilaman.</p>
+          <button class="cta-btn ghost" type="button" id="formAgain">Yana yozish</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="muted small">© <span id="year"></span> <span id="footName"></span></footer>
+
+  <dialog id="modal" autofocus>
+    <button class="close" id="modalClose" aria-label="Yopish">×</button>
+    <div id="modalBody"></div>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
