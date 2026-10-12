@@ -5,10 +5,12 @@ import logging
 import os
 import re
 import smtplib
+import ssl
 import time
 from collections import defaultdict, deque
 from datetime import datetime
 from email.message import EmailMessage
+from email.utils import formataddr
 
 import aiohttp
 
@@ -64,6 +66,7 @@ def validate(data: dict) -> tuple[dict | None, str]:
         "phone": str(data.get("phone") or "").strip()[:20],
         "email": str(data.get("email") or "").strip()[:254],
         "message": str(data.get("message") or "").strip()[:2000],
+        "lang": str(data.get("lang") or "uz")[:2],
     }
     if len(lead["name"]) < 2:
         return None, "name"
@@ -116,26 +119,92 @@ async def notify_telegram(lead: dict, lead_id: int):
                 log.warning("Telegramga yuborilmadi: %s %s", r.status, (await r.text())[:200])
 
 
-def _send_mail(lead: dict):
-    host = os.getenv("SMTP_HOST", "").strip()
+REPLY = {
+    "uz": ("Arizangiz qabul qilindi",
+           "Assalomu alaykum, {name}!",
+           "Saytimdagi arizangiz qabul qilindi. Tez orada siz qoldirgan {phone} raqamiga qo'ng'iroq qilaman.",
+           "Savolingiz bo'lsa, shu xatga javob yozishingiz mumkin.",
+           "Hurmat bilan,"),
+    "ru": ("Ваша заявка принята",
+           "Здравствуйте, {name}!",
+           "Ваша заявка на моём сайте принята. Скоро перезвоню на номер {phone}.",
+           "Если есть вопросы, просто ответьте на это письмо.",
+           "С уважением,"),
+    "en": ("We've received your request",
+           "Hello {name},",
+           "Thank you for your request on my website. I'll call you soon at {phone}.",
+           "If you have any questions, just reply to this email.",
+           "Best regards,"),
+}
+
+
+def _smtp():
+    ctx = ssl.create_default_context()  # sertifikat va host nomi tekshiriladi
+    s = smtplib.SMTP_SSL(os.getenv("SMTP_HOST", ""), int(os.getenv("SMTP_PORT", "465")), timeout=25, context=ctx)
+    s.login(os.getenv("SMTP_USER", ""), os.getenv("SMTP_PASSWORD", ""))
+    return s
+
+
+def _html(lines: list[str], button: tuple[str, str] | None = None) -> str:
+    e = html.escape
+    body = "".join(f'<p style="margin:0 0 14px">{l}</p>' for l in lines)
+    btn = (f'<p style="margin:22px 0"><a href="{e(button[1])}" style="background:#2563eb;color:#fff;'
+           f'text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:600">{e(button[0])}</a></p>') if button else ""
+    return (f'<div style="background:#f6f8fc;padding:32px 12px;font-family:Arial,sans-serif">'
+            f'<div style="max-width:520px;margin:0 auto;background:#fff;border-radius:16px;padding:28px;color:#0f1b33;font-size:15px;line-height:1.6">'
+            f'<div style="font-weight:800;font-size:20px;margin-bottom:18px">karimovsherali<span style="color:#2563eb">.uz</span></div>'
+            f'{body}{btn}</div></div>')
+
+
+def _send_mail(lead: dict, lead_id: int):
     user = os.getenv("SMTP_USER", "").strip()
-    if not host or not user or not lead["email"]:
+    if not os.getenv("SMTP_HOST") or not user:
         return
-    msg = EmailMessage()
-    msg["From"] = f"Sherali Karimov <{user}>"
-    msg["To"] = lead["email"]
-    msg["Subject"] = "Arizangiz qabul qilindi"
-    msg.set_content(
-        f"Assalomu alaykum, {lead['name']}!\n\n"
-        "Saytimdagi arizangiz qabul qilindi. Tez orada siz bilan bog'lanaman.\n\n"
-        "Hurmat bilan,\nSherali Karimov\n" + os.getenv("SITE_URL", ""))
-    with smtplib.SMTP_SSL(host, int(os.getenv("SMTP_PORT", "465")), timeout=20) as s:
-        s.login(user, os.getenv("SMTP_PASSWORD", ""))
-        s.send_message(msg)
+    site = os.getenv("SITE_URL", "").strip()
+    e = html.escape
+    msgs = []
+
+    # 1) mijozga avto-javob
+    if lead["email"]:
+        subj, hello, text, more, bye = REPLY.get(lead.get("lang"), REPLY["uz"])
+        m = EmailMessage()
+        m["From"] = formataddr(("Sherali Karimov", user))
+        m["To"] = lead["email"]
+        m["Subject"] = subj
+        m["Reply-To"] = user
+        plain = [hello.format(name=lead["name"]), text.format(phone=lead["phone"]), more, f"{bye}\nSherali Karimov\n{site}"]
+        m.set_content("\n\n".join(plain))
+        m.add_alternative(_html([e(hello.format(name=lead["name"])), e(text.format(phone=lead["phone"])), e(more),
+                                 f"{e(bye)}<br><b>Sherali Karimov</b>"], (site.replace("https://", ""), site) if site else None),
+                          subtype="html")
+        msgs.append(m)
+
+    # 2) egasiga bildirishnoma: "Javob berish" to'g'ridan-to'g'ri mijozga ketadi
+    notify = os.getenv("LEADS_NOTIFY_EMAIL", "").strip()
+    if notify:
+        tel = re.sub(r"[^\d+]", "", lead["phone"])
+        m = EmailMessage()
+        m["From"] = formataddr(("Sayt arizalari", user))
+        m["To"] = notify
+        m["Subject"] = f"Yangi ariza #{lead_id}: {lead['name']}, {lead['phone']}"
+        if lead["email"]:
+            m["Reply-To"] = lead["email"]
+        rows = [f"Ism: {lead['name']}", f"Telefon: {lead['phone']}", f"Email: {lead['email'] or '—'}",
+                f"Til: {lead.get('lang') or 'uz'}", f"Xabar: {lead['message'] or '—'}"]
+        m.set_content("\n".join(rows))
+        m.add_alternative(_html([f"<b>Saytdan yangi ariza #{lead_id}</b>"] +
+                                [f"{e(r.split(': ', 1)[0])}: <b>{e(r.split(': ', 1)[1])}</b>" for r in rows],
+                                ("Qo'ng'iroq qilish", f"tel:{tel}")), subtype="html")
+        msgs.append(m)
+
+    if msgs:
+        with _smtp() as s:
+            for m in msgs:
+                s.send_message(m)
 
 
-async def send_reply_email(lead: dict):
+async def send_reply_email(lead: dict, lead_id: int = 0):
     try:
-        await asyncio.to_thread(_send_mail, lead)
+        await asyncio.to_thread(_send_mail, lead, lead_id)
     except Exception:
-        log.exception("Email javob yuborilmadi")
+        log.exception("Email yuborilmadi")

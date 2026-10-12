@@ -84,7 +84,7 @@ async def api_contact(request):
         return web.json_response({"ok": False, "error": leads.msg("rate", lang)}, status=429)
     lead_id = await asyncio.to_thread(leads.save, lead, ip)
     asyncio.create_task(leads.notify_telegram(lead, lead_id))
-    asyncio.create_task(leads.send_reply_email(lead))
+    asyncio.create_task(leads.send_reply_email(lead, lead_id))
     return web.json_response({"ok": True})
 
 
