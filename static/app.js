@@ -284,6 +284,7 @@ function renderUzum() {
       <div class="card"><div class="card-head"><h3>${t("u.monthRev")}</h3><div class="legend">
         <span><i class="sw sw-rev"></i>${t("u.revenue")}</span><span><i class="sw sw-net"></i>${t("u.net")}</span></div></div>
         <div class="chart-box"><canvas id="revChart"></canvas></div></div>
+      <div class="card"><h3>${t("u.flow")}</h3><div class="flow" id="uFlow"></div></div>
       <div class="card"><h3>${t("u.monthOrd")}</h3><div class="chart-box"><canvas id="ordChart"></canvas></div></div>
       <div class="two">
         <div class="card"><h3>${t("u.top")}</h3><ol class="top" id="topProducts"></ol></div>
@@ -297,9 +298,9 @@ function renderUzum() {
   const months = v.months;
   const col = themeColors();
   const thisMonth = new Date().toISOString().slice(0, 7);
-  const done = months.filter((m) => m.month < thisMonth && m.net);
-  const best = [...months].sort((a, b) => (b.net || 0) - (a.net || 0))[0] || {};
-  const avg = done.length ? done.reduce((a, m) => a + m.net, 0) / done.length : 0;
+  const done = months.filter((m) => m.month < thisMonth && m.payout);
+  const best = [...months].sort((a, b) => (b.payout || 0) - (a.payout || 0))[0] || {};
+  const avg = done.length ? done.reduce((a, m) => a + m.payout, 0) / done.length : 0;
 
   $("#uzumPeriod").textContent = v.period.from
     ? t("u.period", { from: monthLabel(v.period.from), n: num(tt.ordered) })
@@ -310,11 +311,19 @@ function renderUzum() {
     [t("u.today"), num((tt.today || 0) - (tt.today_cancelled || 0)), tt.today_cancelled ? t("u.todayCancel", { n: num(tt.today_cancelled) }) : t("u.todayNew")],
     [t("u.cancelled"), num(tt.cancelled), tt.ordered ? `${(100 * tt.cancelled / tt.ordered).toFixed(1)}%` : ""],
     [t("u.revenue"), mln(tt.revenue), som(tt.revenue)],
-    [t("u.net"), mln(tt.net), t("u.netSub")],
+    [t("u.net"), mln(tt.payout), t("u.netSub")],
     [t("u.pending"), mln(tt.pending_net), t("u.pendingSub")],
     [t("u.avg"), mln(avg), t("u.net")],
-    [t("u.best"), mln(best.net), best.month ? monthLabel(best.month) : ""],
+    [t("u.best"), mln(best.payout), best.month ? monthLabel(best.month) : ""],
   ]);
+
+  const flow = [
+    ["u.revenue", tt.revenue, "plus"], ["f.commission", -tt.commission], ["f.logistics", -tt.logistics],
+    ["f.storage", -tt.storage], ["f.marketing", -tt.marketing], ["f.other", -tt.other], ["f.tax", -tt.tax],
+    ["u.net", tt.payout, "total"],
+  ].filter(([, v]) => v);
+  $("#uFlow").innerHTML = flow.map(([k, v, kind]) => `<div class="${kind || "minus"}"><span>${t(k)}</span><b>${v < 0 ? "−" : ""}${som(Math.abs(v))}</b>
+    ${kind ? "" : `<i style="width:${Math.min(100, (100 * -v) / (tt.revenue || 1))}%"></i>`}</div>`).join("");
 
   const labels = months.map((m) => monthLabel(m.month));
   chart("#revChart", {
@@ -323,7 +332,7 @@ function renderUzum() {
       labels,
       datasets: [
         { label: t("u.revenue"), data: months.map((m) => m.revenue || 0), backgroundColor: col.accent, borderRadius: 4 },
-        { label: t("u.net"), data: months.map((m) => m.net || 0), backgroundColor: col.good, borderRadius: 4 },
+        { label: t("u.net"), data: months.map((m) => m.payout || 0), backgroundColor: col.good, borderRadius: 4 },
       ],
     },
     options: {
@@ -351,7 +360,7 @@ function renderUzum() {
 
   $("#monthTable tbody").innerHTML = [...months].reverse().map((m) => `
     <tr><td>${monthLabel(m.month)}</td><td>${num(m.ordered)}</td><td>${num(m.sold)}</td>
-    <td>${num(m.cancelled)}</td><td>${num(m.revenue)}</td><td>${num(m.net)}</td></tr>`).join("");
+    <td>${num(m.cancelled)}</td><td>${num(m.revenue)}</td><td>${num(m.payout)}</td></tr>`).join("");
 
   const sync = uzum.last_sync;
   $("#uzumLive").textContent = sync ? t("live.updated", { t: sync.at.slice(11, 16) }) : t("live");

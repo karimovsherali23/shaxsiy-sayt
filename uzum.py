@@ -72,6 +72,17 @@ def connect() -> sqlite3.Connection:
         )""")
     if "product_id" not in {r["name"] for r in db.execute("PRAGMA table_info(items)")}:
         db.execute("ALTER TABLE items ADD COLUMN product_id INTEGER")
+    db.execute("""
+        CREATE TABLE IF NOT EXISTS expenses (
+            id       INTEGER PRIMARY KEY,  -- Uzum payments[].id
+            shop_id  TEXT,
+            date     TEXT,                 -- xizmat sanasi, Toshkent vaqti
+            source   TEXT,                 -- Ombor | Marketing | Logistika | ...
+            code     TEXT,
+            name     TEXT,
+            amount   INTEGER,              -- so'm; daromad (INCOME) manfiy
+            status   TEXT
+        )""")
     db.execute("CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT)")
     return db
 
@@ -137,6 +148,47 @@ async def _fetch_shop_names(session, shops: dict[str, str]) -> dict[str, str]:
     return {i: names[i] for i in shops if i in names}
 
 
+TAX_RATE = float(os.getenv("UZUM_TAX_RATE", "0.01"))  # aylanmadan soliq
+
+
+def expense_row(e: dict) -> tuple:
+    sign = -1 if e.get("type") == "INCOME" else 1
+    ts = e.get("dateService") or e.get("dateCreated") or 0
+    return (e["id"], str(e.get("shopId")),
+            datetime.fromtimestamp(ts / 1000, TZ).replace(tzinfo=None).isoformat(timespec="seconds"),
+            e.get("source") or "", e.get("code") or "", (e.get("name") or "")[:200],
+            sign * (e.get("paymentPrice") or 0) * (e.get("amount") or 1), e.get("status") or "")
+
+
+async def _fetch_expenses(session, db, shop_id: str, token: str) -> int:
+    """Eng yangisidan boshlab o'qiydi; butun sahifa bazada bo'lsa to'xtaydi."""
+    known = {r[0] for r in db.execute("SELECT id FROM expenses WHERE shop_id = ?", (shop_id,))}
+    added, page = 0, 0
+    while page < 500:
+        for attempt in range(6):
+            async with _request(session, "/v1/finance/expenses", token,
+                                {"page": page, "size": 100, "shopIds": shop_id}) as r:
+                if r.status == 429:
+                    await asyncio.sleep(2 * (attempt + 1))
+                    continue
+                if r.status != 200:
+                    raise RuntimeError(f"expenses HTTP {r.status}")
+                items = ((await r.json()).get("payload") or {}).get("payments") or []
+                break
+        else:
+            raise RuntimeError("expenses HTTP 429")
+        rows = [expense_row(e) for e in items if str(e.get("shopId")) == shop_id]
+        new = [x for x in rows if x[0] not in known]
+        db.executemany("INSERT OR REPLACE INTO expenses VALUES (?,?,?,?,?,?,?,?)", rows)
+        db.commit()
+        added += len(new)
+        if len(items) < 100 or (known and not new):
+            break
+        page += 1
+        await asyncio.sleep(0.4)
+    return added
+
+
 async def sync(full: bool) -> str:
     """full=True — butun tarix; aks holda oxirgi UZUM_FAST_DAYS kun (yangi va bekor bo'lganlar)."""
     shops = shops_config()
@@ -161,6 +213,11 @@ async def sync(full: bool) -> str:
             db.executemany(f"INSERT OR REPLACE INTO items ({','.join(COLS)}) VALUES ({','.join('?' * len(COLS))})", rows)
             db.commit()
             msgs.append(f"{shop_id}: {len(rows)}")
+            if full:
+                try:
+                    msgs.append(f"xarajat +{await _fetch_expenses(s, db, shop_id, token)}")
+                except Exception as e:
+                    msgs.append(f"xarajat XATO {e!r}"[:120])
     set_meta(db, "last_sync", {"at": datetime.now(TZ).isoformat(timespec="seconds"), "ok": ok,
                                "full": full, "result": "; ".join(msgs)})
     return ("full " if full else "fast ") + "; ".join(msgs)
@@ -209,8 +266,21 @@ def stats() -> dict:
                 p["qty"] += r["qty"]
                 p["revenue"] += r["price"] * r["qty"]
 
+    # Uzum xarajatlari: logistika sellerProfit ichida allaqachon ayirilgan, qolganlari bu yerda
+    cat = {"Ombor": "storage", "Marketing": "marketing", "Logistika": None}
+    for r in db.execute("SELECT shop_id, date, source, amount FROM expenses WHERE status = 'CONFIRMED'"):
+        key = cat.get(r["source"], "other")
+        if key is None:
+            continue
+        for v in (views["all"], views[r["shop_id"]]):
+            v["total"][key] += r["amount"]
+            v["months"][r["date"][:7]][key] += r["amount"]
+
     out = {}
     for key, v in views.items():
+        for t in [v["total"], *v["months"].values()]:
+            t["tax"] = round(t["revenue"] * TAX_RATE)
+            t["payout"] = t["net"] - t["storage"] - t["marketing"] - t["other"] - t["tax"]
         t = v["total"]
         # faol buyurtmalar: yangi buyurtma +1, bekor bo'lsa -1
         t["active"] = t["ordered"] - t["cancelled"] - t["returns"]
