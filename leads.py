@@ -38,6 +38,19 @@ def _db():
     return db
 
 
+MSG = {
+    "name": {"uz": "Ismingizni yozing", "ru": "Укажите имя", "en": "Please enter your name"},
+    "phone": {"uz": "Telefon raqamini to'g'ri yozing", "ru": "Укажите корректный номер телефона", "en": "Please enter a valid phone number"},
+    "email": {"uz": "Email noto'g'ri", "ru": "Некорректный email", "en": "Invalid email"},
+    "consent": {"uz": "Bog'lanishga rozilik belgisini qo'ying", "ru": "Отметьте согласие на связь", "en": "Please tick the consent box"},
+    "rate": {"uz": "Juda ko'p urinish. Keyinroq qayta yozing.", "ru": "Слишком много попыток. Попробуйте позже.", "en": "Too many attempts. Please try later."},
+}
+
+
+def msg(key: str, lang: str) -> str:
+    return MSG[key].get(lang, MSG[key]["uz"])
+
+
 def validate(data: dict) -> tuple[dict | None, str]:
     if data.get("website"):  # yashirin maydon: odam to'ldirmaydi, bot to'ldiradi
         return None, "spam"
@@ -53,13 +66,13 @@ def validate(data: dict) -> tuple[dict | None, str]:
         "message": str(data.get("message") or "").strip()[:2000],
     }
     if len(lead["name"]) < 2:
-        return None, "Ismingizni yozing"
+        return None, "name"
     if not PHONE_RE.match(lead["phone"]) or len(re.sub(r"\D", "", lead["phone"])) < 9:
-        return None, "Telefon raqamini to'g'ri yozing"
+        return None, "phone"
     if lead["email"] and not EMAIL_RE.match(lead["email"]):
-        return None, "Email noto'g'ri"
+        return None, "email"
     if not data.get("consent"):
-        return None, "Bog'lanishga rozilik belgisini qo'ying"
+        return None, "consent"
     return lead, ""
 
 

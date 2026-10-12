@@ -1,5 +1,7 @@
 """Shaxsiy sayt: portfolio + jonli Uzum savdo va TSUE bot statistikasi."""
 import asyncio
+import base64
+import hmac
 import json
 import logging
 import os
@@ -21,7 +23,8 @@ def load_env(path=ROOT / ".env"):
 
 
 load_env()
-import leads  # noqa: E402  (.env o'qilgandan keyin)
+import analytics  # noqa: E402  (.env o'qilgandan keyin)
+import leads  # noqa: E402
 import reviews  # noqa: E402
 import tsue  # noqa: E402
 import uzum  # noqa: E402
@@ -51,9 +54,12 @@ async def get_tsue():
 NO_CACHE = {"Cache-Control": "no-store"}
 
 
-async def api_profile(_):
-    data = json.loads((ROOT / "content" / "profile.json").read_text(encoding="utf-8"))
-    return web.json_response(data)
+async def api_profile(request):
+    lang = request.query.get("lang", "uz")
+    f = ROOT / "content" / (f"profile.{lang}.json" if lang in ("ru", "en") else "profile.json")
+    if not f.exists():
+        f = ROOT / "content" / "profile.json"
+    return web.json_response(json.loads(f.read_text(encoding="utf-8")))
 
 
 async def api_uzum(_):
@@ -63,7 +69,7 @@ async def api_uzum(_):
 
 
 async def api_contact(request):
-    ip = request.headers.get("X-Forwarded-For", request.remote or "").split(",")[0].strip()
+    ip = _client_ip(request)
     try:
         data = await request.json()
     except Exception:
@@ -71,14 +77,61 @@ async def api_contact(request):
     lead, err = leads.validate(data)
     if err == "spam":
         return web.json_response({"ok": True})  # botga xato aytmaymiz
+    lang = str(data.get("lang") or "uz")
     if err:
-        return web.json_response({"ok": False, "error": err}, status=400)
+        return web.json_response({"ok": False, "error": leads.msg(err, lang)}, status=400)
     if leads.rate_limited(ip):
-        return web.json_response({"ok": False, "error": "Juda ko'p urinish. Keyinroq qayta yozing."}, status=429)
+        return web.json_response({"ok": False, "error": leads.msg("rate", lang)}, status=429)
     lead_id = await asyncio.to_thread(leads.save, lead, ip)
     asyncio.create_task(leads.notify_telegram(lead, lead_id))
     asyncio.create_task(leads.send_reply_email(lead))
     return web.json_response({"ok": True})
+
+
+def _client_ip(request) -> str:
+    return request.headers.get("X-Forwarded-For", request.remote or "").split(",")[0].strip()
+
+
+async def api_hit(request):
+    try:
+        data = await request.json()
+    except Exception:
+        return web.Response(status=204)
+    await asyncio.to_thread(analytics.record, data, _client_ip(request),
+                            request.headers.get("User-Agent", ""), request.host.split(":")[0])
+    return web.Response(status=204)
+
+
+def _admin_ok(request) -> bool:
+    password = os.getenv("ADMIN_PASSWORD", "")
+    if not password:
+        return False
+    auth = request.headers.get("Authorization", "")
+    if not auth.startswith("Basic "):
+        return False
+    try:
+        user, _, pwd = base64.b64decode(auth[6:]).decode().partition(":")
+    except Exception:
+        return False
+    return hmac.compare_digest(user, os.getenv("ADMIN_USER", "admin")) and hmac.compare_digest(pwd, password)
+
+
+def _need_auth():
+    return web.Response(status=401, text="Login kerak", headers={"WWW-Authenticate": 'Basic realm="admin", charset="UTF-8"'})
+
+
+async def admin_page(request):
+    if not _admin_ok(request):
+        return _need_auth()
+    return web.FileResponse(ROOT / "static" / "admin.html", headers=NO_CACHE)
+
+
+async def admin_stats(request):
+    if not _admin_ok(request):
+        return _need_auth()
+    days = max(1, min(int(request.query.get("days", "30") or 30), 365))
+    data = await asyncio.to_thread(analytics.stats, days)
+    return web.json_response(data, headers=NO_CACHE)
 
 
 async def api_quizbot(_):
@@ -109,13 +162,13 @@ async def reviews_loop(app):
 def _asset_version() -> str:
     # CSS/JS o'zgarsa versiya o'zgaradi: brauzer eski keshni ishlatmaydi
     st = ROOT / "static"
-    return str(int(max((st / f).stat().st_mtime for f in ("style.css", "app.js"))))
+    return str(int(max((st / f).stat().st_mtime for f in ("style.css", "app.js", "i18n.js"))))
 
 
 async def index(_):
     v = _asset_version()
     page = (ROOT / "static" / "index.html").read_text(encoding="utf-8")
-    page = page.replace("/static/style.css", f"/static/style.css?v={v}").replace("/static/app.js", f"/static/app.js?v={v}")
+    page = page.replace("/static/style.css", f"/static/style.css?v={v}").replace("/static/app.js", f"/static/app.js?v={v}").replace("/static/i18n.js", f"/static/i18n.js?v={v}")
     return web.Response(text=page, content_type="text/html", headers=NO_CACHE)
 
 
@@ -154,6 +207,9 @@ def make_app():
     app.router.add_get("/api/reviews", api_reviews)
     app.router.add_get("/api/quizbot", api_quizbot)
     app.router.add_post("/api/contact", api_contact)
+    app.router.add_post("/api/hit", api_hit)
+    app.router.add_get("/admin", admin_page)
+    app.router.add_get("/admin/api/stats", admin_stats)
     app.router.add_static("/static", ROOT / "static")
     app.on_startup.append(on_startup)
     app.on_cleanup.append(on_cleanup)

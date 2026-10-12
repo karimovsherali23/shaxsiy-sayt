@@ -1,0 +1,494 @@
+{
+  "name": "Sherali Karimov",
+  "title": "Студент · Разработчик Telegram-ботов и сайтов · Продавец на Uzum Market",
+  "about": "Учусь в Ташкентском государственном экономическом университете. Параллельно создаю Telegram-ботов и веб-приложения, а через два магазина на Uzum Market продаю аксессуары для телефонов. Люблю соединять экономику с технологиями и делать продукты, которые приносят людям реальную пользу.",
+  "photo": "/static/img/me.jpg",
+  "location": "Ташкент, Узбекистан",
+  "education": [
+    {
+      "place": "Ташкентский государственный экономический университет (ТГЭУ)",
+      "degree": "Бакалавриат, студент",
+      "field": "",
+      "years": ""
+    }
+  ],
+  "contacts": [
+    {
+      "type": "telegram",
+      "label": "Telegram",
+      "handle": "@karimovsherali",
+      "url": "https://t.me/karimovsherali"
+    },
+    {
+      "type": "instagram",
+      "label": "Instagram",
+      "handle": "@karimovsherali_",
+      "url": "https://instagram.com/karimovsherali_"
+    },
+    {
+      "type": "github",
+      "label": "GitHub",
+      "handle": "karimovsherali23",
+      "url": "https://github.com/karimovsherali23"
+    },
+    {
+      "type": "phone",
+      "label": "Телефон",
+      "handle": "",
+      "url": ""
+    }
+  ],
+  "skills": [
+    "Python",
+    "aiogram 3",
+    "aiohttp / FastAPI",
+    "JavaScript",
+    "HTML / CSS",
+    "SQLite",
+    "Docker",
+    "AWS EC2",
+    "OpenAI API",
+    "Uzum Seller API",
+    "Аналитика маркетплейсов"
+  ],
+  "projects": [
+    {
+      "id": "xpremium",
+      "type": "Магазин на Uzum",
+      "name": "xPremium",
+      "short": "Магазин чехлов и аксессуаров для телефонов",
+      "description": "Мой первый магазин на Uzum Market (с декабря 2024 года). Чехлы и аксессуары для Samsung, Redmi, iPhone. Результаты продаж показаны ниже в реальном времени.",
+      "features": [
+        "Продажи на Uzum Market (FBO/FBS)",
+        "Карточки товаров и инфографика",
+        "Аналитика продаж через Uzum Seller API"
+      ],
+      "tags": [
+        "Uzum Market",
+        "E-commerce"
+      ],
+      "live": "uzum:58457",
+      "cover": "/static/img/projects/xpremium-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/xpremium-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-6.jpg",
+          "caption": ""
+        }
+      ],
+      "gallery": "products"
+    },
+    {
+      "id": "alicase",
+      "type": "Магазин на Uzum",
+      "name": "Ali CASE",
+      "short": "Второй магазин: стильные силиконовые чехлы",
+      "description": "Мой второй магазин на Uzum Market (с января 2026 года). Специализируется на ярких силиконовых чехлах с дизайном Stitch.",
+      "features": [
+        "Продажи на Uzum Market",
+        "Новая товарная линейка",
+        "Аналитика продаж через Uzum Seller API"
+      ],
+      "tags": [
+        "Uzum Market",
+        "E-commerce"
+      ],
+      "live": "uzum:95546",
+      "cover": "/static/img/projects/alicase-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/alicase-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-6.jpg",
+          "caption": ""
+        }
+      ],
+      "gallery": "products"
+    },
+    {
+      "id": "quiz",
+      "type": "Telegram-бот",
+      "name": "Quiz bot",
+      "handle": "@Quiz_import_Bot",
+      "url": "https://t.me/Quiz_import_Bot",
+      "short": "Бот, создающий тесты и анимированные презентации с помощью ИИ",
+      "description": "Бот для преподавателей и студентов: извлекает тесты из любого файла с помощью ИИ и проводит тестирование прямо в боте. Напишите тему — и он создаст анимированную презентацию PowerPoint с готовым дизайном.",
+      "features": [
+        "Извлечение тестов из Word, PDF и изображений с помощью ИИ",
+        "Тестирование в боте и результаты",
+        "ИИ-презентации: 35 дизайнов, 10 видов анимации, PPTX + веб-версия",
+        "Живая викторина в стиле Kahoot (вход по QR-коду)",
+        "Редактор в Mini App: правка текста, переписывание слайда ИИ",
+        "Оплата через Click"
+      ],
+      "tags": [
+        "aiogram 3",
+        "OpenAI",
+        "Mini App",
+        "PPTX",
+        "Docker"
+      ],
+      "cover": "/static/img/projects/quiz-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/quiz-1.jpg",
+          "caption": "Презентация в корпоративном дизайне"
+        },
+        {
+          "src": "/static/img/projects/quiz-2.jpg",
+          "caption": "Неоновый дизайн"
+        },
+        {
+          "src": "/static/img/projects/quiz-3.jpg",
+          "caption": "Академический дизайн"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "35",
+          "label": "готовых дизайнов"
+        },
+        {
+          "value": "10",
+          "label": "видов анимации"
+        },
+        {
+          "value": "AI",
+          "label": "тесты и слайды"
+        }
+      ],
+      "live": "quiz",
+      "designs": [
+        {
+          "src": "/static/img/designs/01.jpg",
+          "name": "Korporativ"
+        },
+        {
+          "src": "/static/img/designs/02.jpg",
+          "name": "Neon tun"
+        },
+        {
+          "src": "/static/img/designs/03.jpg",
+          "name": "Tabiat"
+        },
+        {
+          "src": "/static/img/designs/04.jpg",
+          "name": "Yorqin"
+        },
+        {
+          "src": "/static/img/designs/05.jpg",
+          "name": "Akademik"
+        },
+        {
+          "src": "/static/img/designs/06.jpg",
+          "name": "Okean"
+        },
+        {
+          "src": "/static/img/designs/07.jpg",
+          "name": "Kosmos"
+        },
+        {
+          "src": "/static/img/designs/08.jpg",
+          "name": "Qahva"
+        },
+        {
+          "src": "/static/img/designs/09.jpg",
+          "name": "Yalpiz"
+        },
+        {
+          "src": "/static/img/designs/10.jpg",
+          "name": "Grafit"
+        },
+        {
+          "src": "/static/img/designs/11.jpg",
+          "name": "Pushti orzu"
+        },
+        {
+          "src": "/static/img/designs/12.jpg",
+          "name": "Startap"
+        },
+        {
+          "src": "/static/img/designs/13.jpg",
+          "name": "Lojuvard"
+        },
+        {
+          "src": "/static/img/designs/14.jpg",
+          "name": "Zaytun"
+        },
+        {
+          "src": "/static/img/designs/15.jpg",
+          "name": "Retro"
+        },
+        {
+          "src": "/static/img/designs/16.jpg",
+          "name": "Muz"
+        },
+        {
+          "src": "/static/img/designs/17.jpg",
+          "name": "Lava"
+        },
+        {
+          "src": "/static/img/designs/18.jpg",
+          "name": "Kitob"
+        },
+        {
+          "src": "/static/img/designs/19.jpg",
+          "name": "Bahor"
+        },
+        {
+          "src": "/static/img/designs/20.jpg",
+          "name": "Tungi shahar"
+        },
+        {
+          "src": "/static/img/designs/21.jpg",
+          "name": "Minimal"
+        },
+        {
+          "src": "/static/img/designs/22.jpg",
+          "name": "Quyosh botishi"
+        },
+        {
+          "src": "/static/img/designs/23.jpg",
+          "name": "Tibbiyot"
+        },
+        {
+          "src": "/static/img/designs/24.jpg",
+          "name": "Moliya"
+        },
+        {
+          "src": "/static/img/designs/25.jpg",
+          "name": "Bolalar"
+        },
+        {
+          "src": "/static/img/designs/26.jpg",
+          "name": "Huquq"
+        },
+        {
+          "src": "/static/img/designs/27.jpg",
+          "name": "Texno"
+        },
+        {
+          "src": "/static/img/designs/28.jpg",
+          "name": "Lavanda"
+        },
+        {
+          "src": "/static/img/designs/29.jpg",
+          "name": "Sahro"
+        },
+        {
+          "src": "/static/img/designs/30.jpg",
+          "name": "Marmar"
+        },
+        {
+          "src": "/static/img/designs/31.jpg",
+          "name": "Kod"
+        },
+        {
+          "src": "/static/img/designs/32.jpg",
+          "name": "Ekologiya"
+        },
+        {
+          "src": "/static/img/designs/33.jpg",
+          "name": "Sport"
+        },
+        {
+          "src": "/static/img/designs/34.jpg",
+          "name": "Shimol"
+        },
+        {
+          "src": "/static/img/designs/35.jpg",
+          "name": "Klassik ko'k"
+        }
+      ]
+    },
+    {
+      "id": "tsue",
+      "type": "Telegram-бот",
+      "name": "TSUE dars jadvali boti",
+      "handle": "@Tsuetimebot",
+      "url": "https://t.me/Tsuetimebot",
+      "short": "Расписание и напоминания для студентов ТГЭУ",
+      "description": "Бот, который я сделал для студентов нашего университета. Показывает расписание группы, преподавателя или аудитории в виде картинки, напоминает перед парой и сразу сообщает об изменениях в расписании.",
+      "features": [
+        "Расписание групп, преподавателей и аудиторий в виде красивой картинки",
+        "Напоминание за 10 минут до пары",
+        "Автоматическое уведомление об изменениях",
+        "Поиск свободных аудиторий",
+        "Ежедневная рассылка расписания в Telegram-группы",
+        "Админ-панель, ежедневная резервная копия"
+      ],
+      "tags": [
+        "aiogram 3",
+        "FastAPI",
+        "Pillow",
+        "Docker"
+      ],
+      "live": "tsue",
+      "cover": "/static/img/projects/tsue-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/tsue-1.jpg",
+          "caption": "Расписание группы, нарисованное ботом"
+        },
+        {
+          "src": "/static/img/projects/tsue-2.jpg",
+          "caption": "Как подключить бота к группе"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "1 300+",
+          "label": "расписаний групп"
+        },
+        {
+          "value": "10 мин",
+          "label": "напоминание до пары"
+        },
+        {
+          "value": "24/7",
+          "label": "работает"
+        }
+      ]
+    },
+    {
+      "id": "darsreja",
+      "type": "Веб-сайт",
+      "name": "DarsReja",
+      "handle": "darsreja.uz",
+      "url": "https://darsreja.uz",
+      "short": "Система автоматического составления расписания для школ",
+      "description": "Полноценная SaaS-система для школ. Завуч вводит учителей, классы, предметы и смены — DarsReja за несколько секунд составляет недельное расписание без накладок. Если учитель заболел, система найдёт свободного и поставит замену. Для каждой роли — свой кабинет: учебная часть, учитель и директор.",
+      "features": [
+        "Расписание без накладок одной кнопкой: учитель не окажется в двух местах сразу",
+        "Базовый учебный план 2026–2027 встроен, часы расставляются сами",
+        "Замена заболевшему учителю в один клик",
+        "Кабинеты учебной части, учителя и директора",
+        "Страница расписания класса для родителей",
+        "Уведомления и восстановление пароля через Telegram",
+        "Импорт из Excel и aSc Timetables, экспорт в PDF/Excel",
+        "На узбекском и русском, на компьютере и телефоне"
+      ],
+      "tags": [
+        "Python",
+        "JavaScript",
+        "SaaS",
+        "Telegram API",
+        "Caddy",
+        "AWS"
+      ],
+      "cover": "/static/img/projects/darsreja-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/darsreja-1.jpg",
+          "caption": "Главная: расписание составляется автоматически"
+        },
+        {
+          "src": "/static/img/projects/darsreja-2.jpg",
+          "caption": "Основные возможности"
+        },
+        {
+          "src": "/static/img/projects/darsreja-3.jpg",
+          "caption": "Кабинеты учебной части, учителя и директора"
+        },
+        {
+          "src": "/static/img/projects/darsreja-4.jpg",
+          "caption": "Тарифы"
+        },
+        {
+          "src": "/static/img/projects/darsreja-mob.jpg",
+          "caption": "Удобно и на телефоне"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "5 минут",
+          "label": "на составление"
+        },
+        {
+          "value": "100%",
+          "label": "без накладок"
+        },
+        {
+          "value": "48 классов",
+          "label": "проверено в реальной школе"
+        }
+      ]
+    },
+    {
+      "id": "slayd",
+      "type": "Веб-сайт",
+      "name": "Slayd",
+      "handle": "slayd.darsreja.uz",
+      "url": "https://slayd.darsreja.uz",
+      "short": "Показ презентаций в браузере с анимацией",
+      "description": "Здесь открываются презентации, созданные Quiz-ботом: их можно смотреть с анимацией на телефоне или компьютере без PowerPoint. Внутри презентации работает и живая викторина.",
+      "features": [
+        "Отдельная ссылка для каждой презентации",
+        "Анимированные слайды, PowerPoint не нужен",
+        "QR-код и панель преподавателя для живой викторины"
+      ],
+      "tags": [
+        "Reveal.js",
+        "LibreOffice"
+      ],
+      "cover": "/static/img/projects/slayd-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/slayd-1.jpg",
+          "caption": "Дизайн «Природа»"
+        },
+        {
+          "src": "/static/img/projects/slayd-2.jpg",
+          "caption": "Яркий дизайн"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Web",
+          "label": "PowerPoint не нужен"
+        },
+        {
+          "value": "QR",
+          "label": "живая викторина"
+        }
+      ]
+    }
+  ]
+}

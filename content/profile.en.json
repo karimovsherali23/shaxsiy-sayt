@@ -1,0 +1,494 @@
+{
+  "name": "Sherali Karimov",
+  "title": "Student · Telegram bot & web developer · Uzum Market seller",
+  "about": "I study at Tashkent State University of Economics. Alongside my studies I build Telegram bots and web apps, and I sell phone accessories through two stores on Uzum Market. I enjoy combining economics with technology to build products that bring people real value.",
+  "photo": "/static/img/me.jpg",
+  "location": "Tashkent, Uzbekistan",
+  "education": [
+    {
+      "place": "Tashkent State University of Economics (TSUE)",
+      "degree": "Bachelor's student",
+      "field": "",
+      "years": ""
+    }
+  ],
+  "contacts": [
+    {
+      "type": "telegram",
+      "label": "Telegram",
+      "handle": "@karimovsherali",
+      "url": "https://t.me/karimovsherali"
+    },
+    {
+      "type": "instagram",
+      "label": "Instagram",
+      "handle": "@karimovsherali_",
+      "url": "https://instagram.com/karimovsherali_"
+    },
+    {
+      "type": "github",
+      "label": "GitHub",
+      "handle": "karimovsherali23",
+      "url": "https://github.com/karimovsherali23"
+    },
+    {
+      "type": "phone",
+      "label": "Phone",
+      "handle": "",
+      "url": ""
+    }
+  ],
+  "skills": [
+    "Python",
+    "aiogram 3",
+    "aiohttp / FastAPI",
+    "JavaScript",
+    "HTML / CSS",
+    "SQLite",
+    "Docker",
+    "AWS EC2",
+    "OpenAI API",
+    "Uzum Seller API",
+    "Marketplace analytics"
+  ],
+  "projects": [
+    {
+      "id": "xpremium",
+      "type": "Uzum store",
+      "name": "xPremium",
+      "short": "Phone cases and accessories store",
+      "description": "My first store on Uzum Market (since December 2024). Cases and accessories for Samsung, Redmi and iPhone. Live sales results are shown below.",
+      "features": [
+        "Selling on Uzum Market (FBO/FBS)",
+        "Product cards and infographics",
+        "Sales analytics via the Uzum Seller API"
+      ],
+      "tags": [
+        "Uzum Market",
+        "E-commerce"
+      ],
+      "live": "uzum:58457",
+      "cover": "/static/img/projects/xpremium-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/xpremium-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/xpremium-6.jpg",
+          "caption": ""
+        }
+      ],
+      "gallery": "products"
+    },
+    {
+      "id": "alicase",
+      "type": "Uzum store",
+      "name": "Ali CASE",
+      "short": "Second store: stylish silicone cases",
+      "description": "My second store on Uzum Market (since January 2026), specialising in colourful Stitch-design silicone cases.",
+      "features": [
+        "Selling on Uzum Market",
+        "New product line",
+        "Sales analytics via the Uzum Seller API"
+      ],
+      "tags": [
+        "Uzum Market",
+        "E-commerce"
+      ],
+      "live": "uzum:95546",
+      "cover": "/static/img/projects/alicase-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/alicase-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "/static/img/projects/alicase-6.jpg",
+          "caption": ""
+        }
+      ],
+      "gallery": "products"
+    },
+    {
+      "id": "quiz",
+      "type": "Telegram bot",
+      "name": "Quiz bot",
+      "handle": "@Quiz_import_Bot",
+      "url": "https://t.me/Quiz_import_Bot",
+      "short": "A bot that creates tests and animated presentations with AI",
+      "description": "A bot for teachers and students: it extracts tests from any file with AI and runs quizzes right inside the bot. Type a topic and it builds an animated PowerPoint presentation with a ready-made design.",
+      "features": [
+        "AI extraction of tests from Word, PDF and images",
+        "Quizzes inside the bot with results",
+        "AI presentations: 35 designs, 10 animation styles, PPTX + web view",
+        "Kahoot-style live quiz (join via QR code)",
+        "Mini App editor: edit text, rewrite a slide with AI",
+        "Payments via Click"
+      ],
+      "tags": [
+        "aiogram 3",
+        "OpenAI",
+        "Mini App",
+        "PPTX",
+        "Docker"
+      ],
+      "cover": "/static/img/projects/quiz-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/quiz-1.jpg",
+          "caption": "Presentation in the corporate design"
+        },
+        {
+          "src": "/static/img/projects/quiz-2.jpg",
+          "caption": "Neon design"
+        },
+        {
+          "src": "/static/img/projects/quiz-3.jpg",
+          "caption": "Academic design"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "35",
+          "label": "ready-made designs"
+        },
+        {
+          "value": "10",
+          "label": "animation styles"
+        },
+        {
+          "value": "AI",
+          "label": "tests and slides"
+        }
+      ],
+      "live": "quiz",
+      "designs": [
+        {
+          "src": "/static/img/designs/01.jpg",
+          "name": "Korporativ"
+        },
+        {
+          "src": "/static/img/designs/02.jpg",
+          "name": "Neon tun"
+        },
+        {
+          "src": "/static/img/designs/03.jpg",
+          "name": "Tabiat"
+        },
+        {
+          "src": "/static/img/designs/04.jpg",
+          "name": "Yorqin"
+        },
+        {
+          "src": "/static/img/designs/05.jpg",
+          "name": "Akademik"
+        },
+        {
+          "src": "/static/img/designs/06.jpg",
+          "name": "Okean"
+        },
+        {
+          "src": "/static/img/designs/07.jpg",
+          "name": "Kosmos"
+        },
+        {
+          "src": "/static/img/designs/08.jpg",
+          "name": "Qahva"
+        },
+        {
+          "src": "/static/img/designs/09.jpg",
+          "name": "Yalpiz"
+        },
+        {
+          "src": "/static/img/designs/10.jpg",
+          "name": "Grafit"
+        },
+        {
+          "src": "/static/img/designs/11.jpg",
+          "name": "Pushti orzu"
+        },
+        {
+          "src": "/static/img/designs/12.jpg",
+          "name": "Startap"
+        },
+        {
+          "src": "/static/img/designs/13.jpg",
+          "name": "Lojuvard"
+        },
+        {
+          "src": "/static/img/designs/14.jpg",
+          "name": "Zaytun"
+        },
+        {
+          "src": "/static/img/designs/15.jpg",
+          "name": "Retro"
+        },
+        {
+          "src": "/static/img/designs/16.jpg",
+          "name": "Muz"
+        },
+        {
+          "src": "/static/img/designs/17.jpg",
+          "name": "Lava"
+        },
+        {
+          "src": "/static/img/designs/18.jpg",
+          "name": "Kitob"
+        },
+        {
+          "src": "/static/img/designs/19.jpg",
+          "name": "Bahor"
+        },
+        {
+          "src": "/static/img/designs/20.jpg",
+          "name": "Tungi shahar"
+        },
+        {
+          "src": "/static/img/designs/21.jpg",
+          "name": "Minimal"
+        },
+        {
+          "src": "/static/img/designs/22.jpg",
+          "name": "Quyosh botishi"
+        },
+        {
+          "src": "/static/img/designs/23.jpg",
+          "name": "Tibbiyot"
+        },
+        {
+          "src": "/static/img/designs/24.jpg",
+          "name": "Moliya"
+        },
+        {
+          "src": "/static/img/designs/25.jpg",
+          "name": "Bolalar"
+        },
+        {
+          "src": "/static/img/designs/26.jpg",
+          "name": "Huquq"
+        },
+        {
+          "src": "/static/img/designs/27.jpg",
+          "name": "Texno"
+        },
+        {
+          "src": "/static/img/designs/28.jpg",
+          "name": "Lavanda"
+        },
+        {
+          "src": "/static/img/designs/29.jpg",
+          "name": "Sahro"
+        },
+        {
+          "src": "/static/img/designs/30.jpg",
+          "name": "Marmar"
+        },
+        {
+          "src": "/static/img/designs/31.jpg",
+          "name": "Kod"
+        },
+        {
+          "src": "/static/img/designs/32.jpg",
+          "name": "Ekologiya"
+        },
+        {
+          "src": "/static/img/designs/33.jpg",
+          "name": "Sport"
+        },
+        {
+          "src": "/static/img/designs/34.jpg",
+          "name": "Shimol"
+        },
+        {
+          "src": "/static/img/designs/35.jpg",
+          "name": "Klassik ko'k"
+        }
+      ]
+    },
+    {
+      "id": "tsue",
+      "type": "Telegram bot",
+      "name": "TSUE dars jadvali boti",
+      "handle": "@Tsuetimebot",
+      "url": "https://t.me/Tsuetimebot",
+      "short": "Timetables and reminders for TSUE students",
+      "description": "A bot I built for students of my university. It shows the timetable of a group, teacher or room as an image, reminds you before each class and instantly reports timetable changes.",
+      "features": [
+        "Group, teacher and room timetables as a clean image",
+        "Reminder 10 minutes before class",
+        "Automatic notice when the timetable changes",
+        "Free room finder",
+        "Daily timetable posts to Telegram groups",
+        "Admin panel and daily backups"
+      ],
+      "tags": [
+        "aiogram 3",
+        "FastAPI",
+        "Pillow",
+        "Docker"
+      ],
+      "live": "tsue",
+      "cover": "/static/img/projects/tsue-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/tsue-1.jpg",
+          "caption": "A group timetable drawn by the bot"
+        },
+        {
+          "src": "/static/img/projects/tsue-2.jpg",
+          "caption": "How to add the bot to a group"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "1 300+",
+          "label": "group timetables"
+        },
+        {
+          "value": "10 min",
+          "label": "reminder before class"
+        },
+        {
+          "value": "24/7",
+          "label": "always on"
+        }
+      ]
+    },
+    {
+      "id": "darsreja",
+      "type": "Website",
+      "name": "DarsReja",
+      "handle": "darsreja.uz",
+      "url": "https://darsreja.uz",
+      "short": "Automatic timetable system for schools",
+      "description": "A complete SaaS for schools. The deputy head enters teachers, classes, subjects and shifts, and DarsReja builds a clash-free weekly timetable in seconds. If a teacher is ill, the system finds a free colleague and assigns a substitute. Every role has its own dashboard: academic office, teacher and principal.",
+      "features": [
+        "One-click clash-free timetable: no teacher is ever in two places",
+        "The 2026–2027 national curriculum is built in, hours fill in automatically",
+        "One-click substitute for an absent teacher",
+        "Dashboards for the academic office, teachers and the principal",
+        "Class timetable page for parents",
+        "Telegram notifications and password recovery",
+        "Import from Excel and aSc Timetables, export to PDF/Excel",
+        "Uzbek and Russian, on desktop and mobile"
+      ],
+      "tags": [
+        "Python",
+        "JavaScript",
+        "SaaS",
+        "Telegram API",
+        "Caddy",
+        "AWS"
+      ],
+      "cover": "/static/img/projects/darsreja-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/darsreja-1.jpg",
+          "caption": "Home page: the timetable is built automatically"
+        },
+        {
+          "src": "/static/img/projects/darsreja-2.jpg",
+          "caption": "Key features"
+        },
+        {
+          "src": "/static/img/projects/darsreja-3.jpg",
+          "caption": "Academic office, teacher and principal dashboards"
+        },
+        {
+          "src": "/static/img/projects/darsreja-4.jpg",
+          "caption": "Pricing"
+        },
+        {
+          "src": "/static/img/projects/darsreja-mob.jpg",
+          "caption": "Works great on mobile"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "5 minutes",
+          "label": "to build a timetable"
+        },
+        {
+          "value": "100%",
+          "label": "clash-free"
+        },
+        {
+          "value": "48 classes",
+          "label": "tested in a real school"
+        }
+      ]
+    },
+    {
+      "id": "slayd",
+      "type": "Website",
+      "name": "Slayd",
+      "handle": "slayd.darsreja.uz",
+      "url": "https://slayd.darsreja.uz",
+      "short": "Animated presentations right in the browser",
+      "description": "Presentations created by the Quiz bot open here: watch them with animations on a phone or computer, no PowerPoint needed. A live quiz also runs inside the presentation.",
+      "features": [
+        "A separate link for every presentation",
+        "Animated slides, no PowerPoint needed",
+        "QR code and teacher panel for the live quiz"
+      ],
+      "tags": [
+        "Reveal.js",
+        "LibreOffice"
+      ],
+      "cover": "/static/img/projects/slayd-1.jpg",
+      "images": [
+        {
+          "src": "/static/img/projects/slayd-1.jpg",
+          "caption": "Nature design"
+        },
+        {
+          "src": "/static/img/projects/slayd-2.jpg",
+          "caption": "Bright design"
+        }
+      ],
+      "highlights": [
+        {
+          "value": "Web",
+          "label": "no PowerPoint needed"
+        },
+        {
+          "value": "QR",
+          "label": "live quiz"
+        }
+      ]
+    }
+  ]
+}
