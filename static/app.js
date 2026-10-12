@@ -1,7 +1,6 @@
 const $ = (s) => document.querySelector(s);
 const MONTHS = t("months");
 const POLL_MS = 30000;
-const SLIDE_MS = 3500;
 
 const num = (n) => Math.round(n || 0).toLocaleString("ru-RU").replace(/[\s,]/g, " ");
 const som = (n) => num(n) + " " + t("unit.som");
@@ -102,8 +101,6 @@ function updateLiveStats() {
 }
 
 const carousel = $("#carousel");
-let paused = false;
-let resumeAt = 0;
 
 function step(dir) {
   const card = carousel.querySelector(".pcard");
@@ -117,17 +114,10 @@ function step(dir) {
 
 function manual(dir) {
   step(dir);
-  resumeAt = Date.now() + 8000; // qo'lda surilgandan keyin biroz kutadi
 }
 
 $("#next").addEventListener("click", () => manual(1));
 $("#prev").addEventListener("click", () => manual(-1));
-carousel.addEventListener("mouseenter", () => { paused = true; });
-carousel.addEventListener("mouseleave", () => { paused = false; });
-carousel.addEventListener("touchstart", () => { resumeAt = Date.now() + 8000; }, { passive: true });
-setInterval(() => {
-  if (!paused && !document.hidden && !$("#modal").open && Date.now() > resumeAt) step(1);
-}, SLIDE_MS);
 
 // ---------------------------------------------------------------- batafsil oyna
 

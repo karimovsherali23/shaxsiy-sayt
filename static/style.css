@@ -132,6 +132,16 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   font-size: 26px; line-height: 1; color: var(--text); cursor: pointer; box-shadow: var(--shadow);
 }
 .arrow:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.carousel-wrap { position: relative; }
+.arrow.side {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 58px; height: 58px; font-size: 34px; padding-bottom: 4px;
+  background: rgba(255, 255, 255, .95); box-shadow: 0 8px 24px rgba(15, 27, 51, .18);
+}
+.arrow.side.left { left: -28px; }
+.arrow.side.right { right: -28px; }
+.arrow.side:hover { transform: translateY(-50%) scale(1.06); }
+@media (max-width: 1200px) { .arrow.side.left { left: -10px; } .arrow.side.right { right: -10px; } }
 .carousel {
   display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
   padding: 4px 4px 16px; margin: 0 -4px; scrollbar-width: none;
@@ -421,6 +431,9 @@ footer { text-align: center; padding: 48px 16px; }
   .edu-gallery figure:last-child { display: none; }
   .hero { padding-top: 40px; gap: 24px; }
   .pcard { flex-basis: 85%; }
+  .arrow.side { width: 44px; height: 44px; font-size: 26px; }
+  .arrow.side.left { left: -6px; }
+  .arrow.side.right { right: -6px; }
   .kpis { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .kpi b { font-size: 20px; }
   .chart-box { height: 240px; }
